@@ -49,9 +49,28 @@ fn main() {
 
     generic_sort(&mut peep_lex);
 
-    for peep in peep_lex {
-        println!("{:?}", peep);
-    }
+    /*
+    People { name: "Benny", age: 28 }
+    People { name: "Cindy", age: 22 }
+    People { name: "Cory", age: 27 }
+    People { name: "Danna", age: 20 }
+    People { name: "Doretha", age: 32 }
+    People { name: "Dwight", age: 19 }
+    People { name: "Hal", age: 20 }
+    People { name: "Juan", age: 33 }
+    People { name: "Lawrence", age: 25 }
+    People { name: "Mac", age: 19 }
+    People { name: "Natalie", age: 25 }
+    People { name: "Risa", age: 24 }
+    People { name: "Romana", age: 27 }
+    People { name: "Rosalyn", age: 26 }
+    People { name: "Susan", age: 31 }
+    People { name: "Zara", age: 23 }
+        */
+
+    // for peep in peep_lex {
+    //     println!("{:?}", peep);
+    // }
 
     println!();
 
@@ -64,7 +83,26 @@ fn main() {
 
     generic_sort(&mut peep_agelex);
 
-    for peep in peep_agelex {
-        println!("{:?}", peep);
-    }
+    /*
+    PeopleAgeOrd { age: 19, name: "Dwight" }
+    PeopleAgeOrd { age: 19, name: "Mac" }
+    PeopleAgeOrd { age: 20, name: "Danna" }
+    PeopleAgeOrd { age: 20, name: "Hal" }
+    PeopleAgeOrd { age: 22, name: "Cindy" }
+    PeopleAgeOrd { age: 23, name: "Zara" }
+    PeopleAgeOrd { age: 24, name: "Risa" }
+    PeopleAgeOrd { age: 25, name: "Lawrence" }
+    PeopleAgeOrd { age: 25, name: "Natalie" }
+    PeopleAgeOrd { age: 26, name: "Rosalyn" }
+    PeopleAgeOrd { age: 27, name: "Cory" }
+    PeopleAgeOrd { age: 27, name: "Romana" }
+    PeopleAgeOrd { age: 28, name: "Benny" }
+    PeopleAgeOrd { age: 31, name: "Susan" }
+    PeopleAgeOrd { age: 32, name: "Doretha" }
+    PeopleAgeOrd { age: 33, name: "Juan" }
+    */
+
+    // for peep in peep_agelex {
+    //     println!("{:?}", peep);
+    // }
 }

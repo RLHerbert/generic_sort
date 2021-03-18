@@ -1,16 +1,22 @@
+// CECS 342 - Spring 2021 - Lab Assignment 3
+// Generic sorting in Rust.
+
 mod sort_floats;
 mod sort_people;
 
 fn generic_sort<T: Ord>(v: &mut Vec<T>) {
     // Wow. What a sort function.
+    // sort() is implemeneted for Vec<T: Ord>. That is, any Vec can be sorted
+    // over any T that implements Ord.
+    // https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort
     v.sort();
 }
 
 fn main() {
     use sort_people::*;
-    // let mut numbers: Vec<f64> = vec![
-    //     645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
-    // ];
+    let mut _numbers: Vec<f64> = vec![
+        645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
+    ];
 
     // generic_sort(&mut numbers);
     // This won't work. IEEE floating point numbers aren't totally ordered.

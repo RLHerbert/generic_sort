@@ -1,34 +1,22 @@
+use people::*;
+use std::cmp;
+
 // CECS 342 - Spring 2021 - Lab Assignment 3
 // Generic sorting in Rust.
+//
+// In which I provide several different approaches to generically sorting in Rust.
 
-mod sort_floats;
-mod sort_people;
+mod people;
 
-fn generic_sort<T: Ord>(v: &mut Vec<T>) {
-    // Wow. What a sort function.
-    // sort() is implemeneted for Vec<T: Ord>. That is, any Vec can be sorted
-    // over any T that implements Ord.
-    // https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort
-    v.sort();
+fn example_floats() -> Vec<f64> {
+    vec![
+        645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
+    ]
 }
 
-fn main() {
-    use sort_people::*;
-    let mut _numbers: Vec<f64> = vec![
-        645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
-    ];
-
-    // generic_sort(&mut numbers);
-    // This won't work. IEEE floating point numbers aren't totally ordered.
-    // Thanks infinity, NaN, +- 0.0.
-
-    // Haha! Your sort is basically guaranteed to be ~~broken~~ (jk just incorrect on edge cases)
-    // on floating point numbers in other languages!
-    // (Unless they/you implement IEEE 754-2019 real careful like, unlikely).
-
-    // Create our people.
-    let peep_tups = vec![
-        ("Hal", 20u32),
+fn example_people() -> Vec<People> {
+    let people_tuples = vec![
+        ("Hal", 20u32), // To force the rest of the ages to be 32 bit unsigned integers. i32 otherwise.
         ("Susan", 31),
         ("Dwight", 19),
         ("Lawrence", 25),
@@ -45,70 +33,103 @@ fn main() {
         ("Juan", 33),
         ("Natalie", 25),
     ];
-
-    // People are sorted by name first
-    let mut peep_lex: Vec<People> = peep_tups
+    people_tuples
         .clone()
         .into_iter()
-        .map(|peep| People::from(peep))
-        .collect();
+        .map(|peep| People::from(People::from(peep)))
+        .collect()
+}
 
-    generic_sort(&mut peep_lex);
+fn main() {
+    // Numbers
+    {
+        let mut numbers = example_floats();
+        // As it turns out, Rust's standard library, std, does not implement Ord on its implementation of IEEE floating point numbers.
+        // This is because the IEEE definition of FP numbers is not totally ordered. Rust does implement PartialOrd for FP numbers.
+        // We can thus sort by using a Vec's sort_by method (which I do below), or by wrapping our floats in another type and
+        // implementing Ord on that.
 
-    /*
-    People { name: "Benny", age: 28 }
-    People { name: "Cindy", age: 22 }
-    People { name: "Cory", age: 27 }
-    People { name: "Danna", age: 20 }
-    People { name: "Doretha", age: 32 }
-    People { name: "Dwight", age: 19 }
-    People { name: "Hal", age: 20 }
-    People { name: "Juan", age: 33 }
-    People { name: "Lawrence", age: 25 }
-    People { name: "Mac", age: 19 }
-    People { name: "Natalie", age: 25 }
-    People { name: "Risa", age: 24 }
-    People { name: "Romana", age: 27 }
-    People { name: "Rosalyn", age: 26 }
-    People { name: "Susan", age: 31 }
-    People { name: "Zara", age: 23 }
-        */
+        println!("Numbers Unsorted:");
+        println!("{:?}", numbers);
 
-    // for peep in peep_lex {
-    //     println!("{:?}", peep);
-    // }
+        numbers.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-    println!();
+        println!();
+        println!("Numbers Sorted:");
+        println!("{:?}", numbers);
+    };
 
-    // PeopleAgeOrd are ordered by age first.
-    let mut peep_agelex: Vec<PeopleAgeOrd> = peep_tups
-        .clone()
-        .into_iter()
-        .map(|peep| PeopleAgeOrd::from(People::from(peep)))
-        .collect();
+    // People
+    {
+        let mut people = example_people();
 
-    generic_sort(&mut peep_agelex);
+        println!();
 
-    /*
-    PeopleAgeOrd { age: 19, name: "Dwight" }
-    PeopleAgeOrd { age: 19, name: "Mac" }
-    PeopleAgeOrd { age: 20, name: "Danna" }
-    PeopleAgeOrd { age: 20, name: "Hal" }
-    PeopleAgeOrd { age: 22, name: "Cindy" }
-    PeopleAgeOrd { age: 23, name: "Zara" }
-    PeopleAgeOrd { age: 24, name: "Risa" }
-    PeopleAgeOrd { age: 25, name: "Lawrence" }
-    PeopleAgeOrd { age: 25, name: "Natalie" }
-    PeopleAgeOrd { age: 26, name: "Rosalyn" }
-    PeopleAgeOrd { age: 27, name: "Cory" }
-    PeopleAgeOrd { age: 27, name: "Romana" }
-    PeopleAgeOrd { age: 28, name: "Benny" }
-    PeopleAgeOrd { age: 31, name: "Susan" }
-    PeopleAgeOrd { age: 32, name: "Doretha" }
-    PeopleAgeOrd { age: 33, name: "Juan" }
-    */
+        println!("People Unsorted:");
+        println!("{:#?}", people);
 
-    // for peep in peep_agelex {
-    //     println!("{:?}", peep);
-    // }
+        people.sort();
+
+        println!();
+        println!("People Sorted (Lexicographically):");
+        println!("{:#?}", people);
+
+        let age_descending = |s: &People, o: &People| match s.age.cmp(&o.age) {
+            cmp::Ordering::Less => cmp::Ordering::Greater,
+            cmp::Ordering::Equal => s.name.cmp(&o.name),
+            cmp::Ordering::Greater => cmp::Ordering::Less,
+        };
+
+        people.sort_by(age_descending);
+
+        println!();
+        println!("People Sorted (Age Descending):");
+        println!("{:#?}", people);
+    }
+
+    // GenericPeople<Ordering>
+    {
+        let people = example_people();
+
+        println!();
+
+        // Ordering = Lexicographic
+        {
+            let mut people_lex_order: Vec<GenericPeople<Lexicographic>> = people
+                .clone()
+                .into_iter()
+                .clone()
+                .map(|p| p.into())
+                .collect();
+
+            println!();
+            println!("GenericPeople<LexicoGraphic> Unsorted: ");
+            println!("{:#?}", people_lex_order);
+
+            people_lex_order.sort();
+
+            println!();
+            println!("GenericPeople<LexicoGraphic> Sorted: ");
+            println!("{:#?}", people_lex_order);
+        }
+        // Ordering = AgeDescending
+        {
+            let mut people_age_order: Vec<GenericPeople<AgeDescending>> = people
+                .clone()
+                .into_iter()
+                .clone()
+                .map(|p| p.into())
+                .collect();
+
+            println!();
+            println!("GenericPeople<AgeDescending> Unsorted: ");
+            println!("{:#?}", people_age_order);
+
+            people_age_order.sort();
+
+            println!();
+            println!("GenericPeople<AgeDescending> Sorted: ");
+            println!("{:#?}", people_age_order);
+        }
+    }
 }

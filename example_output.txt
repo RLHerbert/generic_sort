@@ -1,0 +1,146 @@
+Numbers Unsorted:
+[645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.1, 23.46, 635.47, -876.32, 467.83, 62.25]
+
+Numbers Sorted:
+[-876.32, -34.23, 1.1, 1.11, 5.31, 23.46, 37.59, 62.25, 76.41, 467.83, 635.47, 645.41]
+
+People Unsorted:
+[
+    Name: Hal, Age: 20,
+    Name: Susan, Age: 31,
+    Name: Dwight, Age: 19,
+    Name: Lawrence, Age: 25,
+    Name: Cindy, Age: 22,
+    Name: Cory, Age: 27,
+    Name: Mac, Age: 19,
+    Name: Romana, Age: 27,
+    Name: Doretha, Age: 32,
+    Name: Danna, Age: 20,
+    Name: Zara, Age: 23,
+    Name: Rosalyn, Age: 26,
+    Name: Risa, Age: 24,
+    Name: Benny, Age: 28,
+    Name: Juan, Age: 33,
+    Name: Natalie, Age: 25,
+]
+
+People Sorted (Lexicographically):
+[
+    Name: Benny, Age: 28,
+    Name: Cindy, Age: 22,
+    Name: Cory, Age: 27,
+    Name: Danna, Age: 20,
+    Name: Doretha, Age: 32,
+    Name: Dwight, Age: 19,
+    Name: Hal, Age: 20,
+    Name: Juan, Age: 33,
+    Name: Lawrence, Age: 25,
+    Name: Mac, Age: 19,
+    Name: Natalie, Age: 25,
+    Name: Risa, Age: 24,
+    Name: Romana, Age: 27,
+    Name: Rosalyn, Age: 26,
+    Name: Susan, Age: 31,
+    Name: Zara, Age: 23,
+]
+
+People Sorted (Age Descending):
+[
+    Name: Juan, Age: 33,
+    Name: Doretha, Age: 32,
+    Name: Susan, Age: 31,
+    Name: Benny, Age: 28,
+    Name: Cory, Age: 27,
+    Name: Romana, Age: 27,
+    Name: Rosalyn, Age: 26,
+    Name: Lawrence, Age: 25,
+    Name: Natalie, Age: 25,
+    Name: Risa, Age: 24,
+    Name: Zara, Age: 23,
+    Name: Cindy, Age: 22,
+    Name: Danna, Age: 20,
+    Name: Hal, Age: 20,
+    Name: Dwight, Age: 19,
+    Name: Mac, Age: 19,
+]
+
+
+GenericPeople<LexicoGraphic> Unsorted: 
+[
+    Name: Hal, Age: 20,
+    Name: Susan, Age: 31,
+    Name: Dwight, Age: 19,
+    Name: Lawrence, Age: 25,
+    Name: Cindy, Age: 22,
+    Name: Cory, Age: 27,
+    Name: Mac, Age: 19,
+    Name: Romana, Age: 27,
+    Name: Doretha, Age: 32,
+    Name: Danna, Age: 20,
+    Name: Zara, Age: 23,
+    Name: Rosalyn, Age: 26,
+    Name: Risa, Age: 24,
+    Name: Benny, Age: 28,
+    Name: Juan, Age: 33,
+    Name: Natalie, Age: 25,
+]
+
+GenericPeople<LexicoGraphic> Sorted: 
+[
+    Name: Benny, Age: 28,
+    Name: Cindy, Age: 22,
+    Name: Cory, Age: 27,
+    Name: Danna, Age: 20,
+    Name: Doretha, Age: 32,
+    Name: Dwight, Age: 19,
+    Name: Hal, Age: 20,
+    Name: Juan, Age: 33,
+    Name: Lawrence, Age: 25,
+    Name: Mac, Age: 19,
+    Name: Natalie, Age: 25,
+    Name: Risa, Age: 24,
+    Name: Romana, Age: 27,
+    Name: Rosalyn, Age: 26,
+    Name: Susan, Age: 31,
+    Name: Zara, Age: 23,
+]
+
+GenericPeople<AgeDescending> Unsorted: 
+[
+    Name: Hal, Age: 20,
+    Name: Susan, Age: 31,
+    Name: Dwight, Age: 19,
+    Name: Lawrence, Age: 25,
+    Name: Cindy, Age: 22,
+    Name: Cory, Age: 27,
+    Name: Mac, Age: 19,
+    Name: Romana, Age: 27,
+    Name: Doretha, Age: 32,
+    Name: Danna, Age: 20,
+    Name: Zara, Age: 23,
+    Name: Rosalyn, Age: 26,
+    Name: Risa, Age: 24,
+    Name: Benny, Age: 28,
+    Name: Juan, Age: 33,
+    Name: Natalie, Age: 25,
+]
+
+GenericPeople<AgeDescending> Sorted: 
+[
+    Name: Juan, Age: 33,
+    Name: Doretha, Age: 32,
+    Name: Susan, Age: 31,
+    Name: Benny, Age: 28,
+    Name: Cory, Age: 27,
+    Name: Romana, Age: 27,
+    Name: Rosalyn, Age: 26,
+    Name: Lawrence, Age: 25,
+    Name: Natalie, Age: 25,
+    Name: Risa, Age: 24,
+    Name: Zara, Age: 23,
+    Name: Cindy, Age: 22,
+    Name: Danna, Age: 20,
+    Name: Hal, Age: 20,
+    Name: Dwight, Age: 19,
+    Name: Mac, Age: 19,
+]

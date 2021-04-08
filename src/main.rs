@@ -1,46 +1,14 @@
-use people::*;
-use std::cmp;
-
 // CECS 342 - Spring 2021 - Lab Assignment 3
 // Generic sorting in Rust.
 //
 // In which I provide several different approaches to generically sorting in Rust.
 
 mod people;
-
-fn example_floats() -> Vec<f64> {
-    vec![
-        645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
-    ]
-}
-
-fn example_people() -> Vec<People> {
-    let people_tuples = vec![
-        ("Hal", 20u32), // To force the rest of the ages to be 32 bit unsigned integers. i32 otherwise.
-        ("Susan", 31),
-        ("Dwight", 19),
-        ("Lawrence", 25),
-        ("Cindy", 22),
-        ("Cory", 27),
-        ("Mac", 19),
-        ("Romana", 27),
-        ("Doretha", 32),
-        ("Danna", 20),
-        ("Zara", 23),
-        ("Rosalyn", 26),
-        ("Risa", 24),
-        ("Benny", 28),
-        ("Juan", 33),
-        ("Natalie", 25),
-    ];
-    people_tuples
-        .clone()
-        .into_iter()
-        .map(|peep| People::from(People::from(peep)))
-        .collect()
-}
+use people::{generic::*, simple::People};
 
 fn main() {
+    use std::cmp;
+
     // Numbers
     {
         let mut numbers = example_floats();
@@ -132,4 +100,36 @@ fn main() {
             println!("{:#?}", people_age_order);
         }
     }
+}
+
+fn example_floats() -> Vec<f64> {
+    vec![
+        645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25,
+    ]
+}
+
+fn example_people() -> Vec<People> {
+    let people_tuples = vec![
+        ("Hal", 20u32), // To force the rest of the ages to be 32 bit unsigned integers. i32 otherwise.
+        ("Susan", 31),
+        ("Dwight", 19),
+        ("Lawrence", 25),
+        ("Cindy", 22),
+        ("Cory", 27),
+        ("Mac", 19),
+        ("Romana", 27),
+        ("Doretha", 32),
+        ("Danna", 20),
+        ("Zara", 23),
+        ("Rosalyn", 26),
+        ("Risa", 24),
+        ("Benny", 28),
+        ("Juan", 33),
+        ("Natalie", 25),
+    ];
+    people_tuples
+        .clone()
+        .into_iter()
+        .map(|peep| People::from(People::from(peep)))
+        .collect()
 }

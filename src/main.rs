@@ -71,13 +71,13 @@ fn main() {
                 .collect();
 
             println!();
-            println!("GenericPeople<LexicoGraphic> Unsorted: ");
+            println!("GenericPeople<Lexicographic> Unsorted: ");
             println!("{:#?}", people_lex_order);
 
             people_lex_order.sort();
 
             println!();
-            println!("GenericPeople<LexicoGraphic> Sorted: ");
+            println!("GenericPeople<Lexicographic> Sorted: ");
             println!("{:#?}", people_lex_order);
         }
         // Ordering = AgeDescending

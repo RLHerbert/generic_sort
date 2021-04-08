@@ -25,7 +25,7 @@ fn main() {
         println!();
         println!("Numbers Sorted:");
         println!("{:?}", numbers);
-    };
+    }
 
     // People
     {

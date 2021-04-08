@@ -130,6 +130,6 @@ fn example_people() -> Vec<People> {
     people_tuples
         .clone()
         .into_iter()
-        .map(|peep| peep.into())
+        .map(|person| person.into())
         .collect()
 }
